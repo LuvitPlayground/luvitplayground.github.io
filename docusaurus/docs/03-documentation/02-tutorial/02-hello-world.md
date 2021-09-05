@@ -23,7 +23,7 @@ So far, this seems pretty boring. Running the script by typing ``luvit HelloWorl
 
 > Hello world
 
-... and after this, your program exits. This is exactly what you'd expect. Let's make things interesting and access the global environment.
+... and after this, your program exits. That is exactly what you'd expect. Let's make things interesting and access the global environment.
 
 ## The Luvi Environment
 
