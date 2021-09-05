@@ -77,6 +77,7 @@ The output will be similar to the last time we ran the script, except now we can
 Printing ``uv`` via ``pretty-print`` will give you an overview of the entire API surface, i.e., all the functions exported from the ``libuv`` C-library. Don't worry too much about how to use them all for now, we'll get back to that shortly. It should look approximately like this:
 
 ![02-luv-api-dump.png](02-luv-api-dump.png)
+Pictured: The expected console output [(click here to enlarge)](02-luv-api-dump.png)
 
 Needless to say, you can do the same thing with any of the other embedded libraries or bindings, such as ``jit``, ``openssl``, ``miniz`` or even the default Lua libraries like ``string`` and ``os``. Generally, any Lua object can be printed, including your own tables and variables.
 
