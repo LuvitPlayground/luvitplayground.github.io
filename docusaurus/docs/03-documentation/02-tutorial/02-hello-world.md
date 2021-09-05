@@ -67,10 +67,12 @@ local SLEEP_TIME_IN_MILLISECONDS = 3000
 uv.sleep(SLEEP_TIME_IN_MILLISECONDS)
 
 print("Good morning!")
+
+print(uv)
 p(uv)
 ```
 
-The output will be similar to the last time we ran the script, except now we can see the output of calling the embedded ``p`` global (a shorthand for ``pretty-print``). Usually, Lua's ``print`` cannot print complex data structures because it simply calls the ``__tostring`` metamethod, resulting in an output like ``table: 0x0232126a23f8``. Luvit's pretty-print library can however print these recursively and in a human-readable fashion, which makes it a handy tool for debugging or to refresh your memory without having to look up APIs.
+The output will be similar to the last time we ran the script, except now we can see the output of calling the embedded ``p`` global (a shorthand for ``pretty-print``). Evidently, Lua's ``print`` cannot print complex data structures because it simply calls the ``__tostring`` metamethod, resulting in an output like ``table: 0x0232126a23f8``. Luvit's pretty-print library can however print these recursively and in a human-readable fashion, which makes it a handy tool for debugging or to refresh your memory without having to look up APIs.
 
 Printing ``uv`` via ``pretty-print`` will give you an overview of the entire API surface, i.e., all the functions exported from the ``libuv`` C-library. Don't worry too much about how to use them all for now, we'll get back to that shortly. It should look approximately like this:
 
