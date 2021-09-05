@@ -39,7 +39,7 @@ There's also the ``luv`` bindings API, which allows calling into the C-library u
 
 Our community members are always happy to answer your questions, so feel free to head into the official [Luvit Discord](https://discord.gg/luvit) and ask away!
 
-Just please make sure you've read through the documentation first, as the humble author of these pages has taken great pains to make it as easy to understand and accessible as possible. In fact, if you can't find an answer to your question here, please let us know via Discord or (GitHub) and it will be improved. The quality of the documentation is extremely important, so we'd love to hear from you!
+Just please make sure you've read through the documentation first, as the humble author of these pages has taken great pains to make it as easy to understand and accessible as possible. In fact, if you can't find an answer to your question here, please let us know via Discord (or GitHub) and it will be improved. The quality of the documentation is extremely important, so we'd love to hear from you!
 
 ## If You Want to Help
 
