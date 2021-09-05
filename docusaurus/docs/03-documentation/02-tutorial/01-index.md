@@ -45,4 +45,4 @@ Just please make sure you've read through the documentation first, as the humble
 
 If, during the course of your work with Luvit, you have some time to spare and you'd like to help *us*, that's great! The Luvit community is still fairly small, so we need all the help we can get to ensure the project stays alive and well. You don't need to be an expert to do this.
 
-Please head to the [Contribution Hub](/docs/contributing) to learn what you can do to get involved, or simply ask on [Discord](https://discord.gg/luvit) for some guidance.
+Please head to the [Contribution Hub](/contributing) to learn what you can do to get involved, or simply ask on [Discord](https://discord.gg/luvit) for some guidance.
