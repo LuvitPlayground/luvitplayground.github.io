@@ -158,6 +158,6 @@ In fact, if you don't move ``HelloWorldModule`` to ``libs/HelloWorldModule`` it 
 
 ## Introducing the Event Loop
 
-Possibly the most important part of the Luvit environment is the event loop, which is closely linked to libuv and the ``uv`` library. So far we haven't done much with ``uv``, other than using the ``timer`` API and dumping all of its exported functions to test ``pretty-print``.
+Possibly the most important part of the Luvit environment is the event loop, which is closely linked to ``libuv`` and the ``uv`` library. So far we haven't done much with ``uv``, other than using the ``timer`` API and dumping all of its exported functions to test ``pretty-print``.
 
 In the next section, we'll be using some of the exposed lower-level facilities and dive into what else the underlying ``libuv`` can do for us.
