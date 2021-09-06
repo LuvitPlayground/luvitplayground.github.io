@@ -5,7 +5,7 @@ slug: /docs/tutorial/luvit-webserver
 
 # A Non-Blocking Webserver
 
-While the previous entries were mostly introducing important concepts, it is time to build something actually interesting: A webserver.
+While the previous entries were mostly introducing important concepts, it's time to build something actually interesting: A webserver.
 
 ## Simplifying Asynchronous I/O
 
