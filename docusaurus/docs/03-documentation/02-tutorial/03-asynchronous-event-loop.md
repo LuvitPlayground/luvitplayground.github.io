@@ -5,7 +5,7 @@ slug: /docs/tutorial/asynchronous-event-loop
 
 # Enter the Event Loop
 
-Before we explore ``uv``, we should stop a moment and think about the different ways that we can access resources (like files or sockets).
+Before we explore ``uv``, we should pause a moment and consider the different ways that we can access resources (like files or sockets).
 
 ## Blocking and Non-Blocking I/O
 
