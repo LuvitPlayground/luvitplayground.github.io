@@ -70,7 +70,7 @@ local fileContents = uv.fs_read(file, lengthInBytes, firstByteToRead)
 print("File contents: ")
 print(fileContents)
 
-uv.fs_close(file, onFileClosed)
+uv.fs_close(file)
 print("The file is now CLOSED")
 ```
 
