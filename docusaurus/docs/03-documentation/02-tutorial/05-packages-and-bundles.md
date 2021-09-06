@@ -17,7 +17,7 @@ There isn't really any drawback to that approach because Lua is extremely lightw
 
 ## Creating a Luvi Bundle
 
-Before we can actually use ``luvi``, we must understand a bit more about what it actually is and what it can (not) do. While ``luvit`` is the runtime used to run the scripts on your own system, this interpretation is somewhat misleading: In reality, ``luvi`` is the Lua engine that runs all the scripts (and includes ``libuv``, bound via ``uv``), and it just executes ``luvit`` as a special application - a so-called bundle.
+Before we can actually use ``luvi``, we must understand a bit more about what it is and what it can (not) do. While ``luvit`` is the runtime we've used to execute the scripts on your own system, this interpretation is somewhat misleading: In reality, ``luvi`` is the Lua engine that runs all the scripts (and includes ``libuv``, bound via ``uv``). It just executes ``luvit`` as a special application - a so-called bundle.
 
 A bundle in the Luvit ecosystem is simply a self-contained package following a predefined structure: It must have an entry point called ``main.lua`` and can be stored in either a folder or a compressed ``.zip`` archive (this is one reason why ``miniz`` is included inside ``luvi``).
 
@@ -31,17 +31,17 @@ You can try running this via ``luvi .`` inside the same folder, or by giving the
 
 ![05-luvi-missing-dependencies.png](05-luvi-missing-dependencies.png)
 
-What gives? It appears that the environment ``luvi`` provides isn't quite the same as the one our script encountered when run via  ``luvit``. We've already determined this back in [The Luvi Environment](/docs/tutorial/hello-world#the-luvi-environment), but it's quite easy to forget and very important, so it bears repeating!
+What gives? It appears that the environment ``luvi`` provides isn't quite the same as the one our script encountered when run via  ``luvit``. We've already seen this back in [The Luvi Environment](/docs/tutorial/hello-world#the-luvi-environment), but it's quite easy to forget and very important, so it bears repeating!
 
 ## Luvi and Luvit Don't Get Along
 
-There's a reason the ``fs`` and ``http`` libraries have been referred to as "Luvit APIs" in these pages. They're automatically included in ``luvit``, but ``luvi`` only contains the most fundamental libraries (like ``jit``, ``openssl``, ``miniz`` and ``uv``). This means you can do ``require("uv")`` but ``luvi`` won't find ``http``, which is of course rather unfortunate considering we wanted to use it in our webserver.
+There's a reason the ``fs`` and ``http`` libraries have been referred to as "Luvit APIs" in these pages. They're automatically included in ``luvit``, but ``luvi`` only contains the most fundamental low-level libraries (like ``jit``, ``openssl``, ``miniz`` and ``uv``). This means you can do ``require("uv")`` but ``luvi`` won't find ``http``, which is of course rather unfortunate considering we wanted to use it in our webserver.
 
 One way to get around this problem is by manually downloading the ``http`` script and adding it to our bundle. *Or*, we could use ``lit``.
 
 ## Adding Luvit Packages to the Luvi Bundle
 
-Lit is Luvit's package manager, and as such it can help us install packages. As it just happens to be, ``http`` is provided as such a package. We'll be able to include it in our bundle by typing the following in the folder that contains the bundle's entry point, ``main.lua``: 
+Lit is Luvit's package manager, and as such it can help us install packages. And it just so happens that ``http`` is available as such a package. We'll be able to include it in our bundle by typing the following in the folder that contains the bundle's entry point, ``main.lua``: 
 
 > lit install luvit/http
 
@@ -55,7 +55,7 @@ If we recall that [Luvit comes with a special ``require`` handler for resolving 
 
 > lit install luvit/require
 
-After doing this, the ``deps`` folder includes a ``require.lua`` file, which is exactly the custom require handler we wanted to use. "Hold up a second", I can hear you say, "If we need this ``require`` package to ``require`` packages from the ``deps`` folder, then how on earth can we get the ``require`` itself from that folder?". The default Lua ``require`` definitely won't be able to do this; it doesn't look inside ``deps/``.
+After doing this, the ``deps`` folder includes a ``require.lua`` file, which containts the custom require handler we wanted to use. "Hold up a second", I can hear you say, "If we need this ``require`` package to ``require`` packages from the ``deps`` folder, then how on earth can we get the ``require`` itself from that folder?". The default Lua ``require`` definitely won't be able to do this; it doesn't look inside ``deps/``.
 
 The answer, in this case, is "black magic" (or rather, adventurous design choices): ``luvi`` will automatically include it into a bundle whenever it finds a ``deps/require.lua`` file, and this will automatically replace Lua's standard ``require``.  *What could possibly go wrong?*
 
@@ -77,47 +77,34 @@ require("./SimpleEchoWebserver")
 uv.run()
 ```
 
-As a side note: Doing this has absolutely no (adverse) effects when running the script via ``luvit``. The loop only exits when there are no more scheduled tasks or callbacks, and in that case ``libuv`` simply won't do anything when ``luvit`` calls ``uv.run()`` for the second time.
+As a side note: Doing this has absolutely no (adverse) effect when running the script via ``luvit``. The loop only exits when there are no more scheduled tasks or callbacks, and in that case ``libuv`` simply won't do anything when ``luvit`` calls ``uv.run()`` for the second time.
 
 When running the bundle through ``luvi .`` this time around, it will *finally* work as expected. So what do we do with this now?
 
-## Creating a Standalone Version - Part 1
+## Creating a Standalone Version
 
-Why, we want to create a standalone (binary) executable, of course! And we can, by simply typing this:
+Why, we want to create a standalone (binary) executable, of course! One that we can distribute. And we do, by simply typing this:
 
 > luvi . --output echo-server.exe
 
 That's for Windows, obviously. There's no need to call it ``echo-server.exe`` on Unix-based systems, as you can imagine.
 Once this is done, we are free to run ``echo-server.exe`` (or ``./echo-server`` on Unix systems) and it will start our application. Isn't that great?
 
+The result is that our self-contained bundle is zipped and combined with the ``luvi`` executable, and much like it would do when using the ``luvit`` bundle, it now runs our app inside its environment when started. You can actually open the executable in a zip program:
 
+![05-zip-bundle-contents.png](05-zip-bundle-contents.png)
+
+This particular example is using ``7zip`` on Windows, but it should work with any other standard ``zip`` utility, as well.
 
 ## Scripts and Packages and Bundles, Oh My
 
-One final note on the ``deps`` folder: We deliberately chose ``libs/`` for our ``HelloWorldModule.lua`` earlier to distinguish it from the Luvit standard library or other packages, but this is purely a matter of taste. Both ``deps/`` and ``libs/`` will be checked by Luvit's ``require``.
+Since we've just created a self-containing executable, we could already deploy our application to other machines and run it as-is.
 
-We haven't really established what a "package" actually is, and how it differs from a "bundle". It doesn't really matter when you're just installing them, but if we are to make our own we better know the difference, no?
+There are two remaining issues, though:
 
-luvi uv.run vs luvit
+1. The zip archive contains every single file and folder from our directory, even those not actually needed by the ``main.lua`` script
+2. Packaging apps as binary and distributing them is very inconvenient, particularly when multiple versions will inevitably exist
 
-global environment/must require require, pretty-print etc.
+The first is due to ``luvi`` not really caring to figure out *what* should be bundled with our application, but rather handling the bundling process itself. And the second requires the use of a proper package managing tool, which is exactly what ``lit`` was made for.
 
-
-luvi bundle, make local
-
-lit package
-package.lua
-entry point main.lua
-init/deprecated?
-
-lit make
-
-
-
-
-### Defining Package Metadata
-
-## Creating a Standalone Version
-
-Using ``lit`` (and ``luvi``) we can
-
+In the next (and final) part of this tutorial, we'll be creating a Lit package that we can distribute and run anywhere we want.
