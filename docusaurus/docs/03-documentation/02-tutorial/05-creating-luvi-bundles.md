@@ -1,9 +1,9 @@
 ---
 sidebar_position: 6
-slug: /docs/tutorial/packages-and-bundles
+slug: /docs/tutorial/bundles
 ---
 
-# Packages and Bundles
+# Self-Contained Bundles
 
 Until now, we've only used the ``luvit`` executable. The time has finally come to learn about the other tools we've downloaded earlier.
 
