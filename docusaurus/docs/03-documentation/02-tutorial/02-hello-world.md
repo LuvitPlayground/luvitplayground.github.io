@@ -5,7 +5,7 @@ slug: /docs/tutorial/hello-world
 
 # Your First Luvit App
 
-In this tutorial, we will be creating a simple Hello World app that runs in the Luvit environment. By the end of it, this application will have become a (very simple) webserver that responds to your requests with the same "Hello world" text, can be run like any ordinary executable completely on its own, and is turned into a self-contained Lit package ready to be uploaded and shared with the world.
+In this tutorial, we will be creating a simple Hello World app that runs in the Luvit environment. By the end of it, this application will have become a (very simple) webserver that responds to your requests with the same "Hello world" text, can be run like any ordinary executable completely on its own, and is turned into a self-contained package ready to be uploaded and shared with the world.
 
 ## Creating Your Application
 
