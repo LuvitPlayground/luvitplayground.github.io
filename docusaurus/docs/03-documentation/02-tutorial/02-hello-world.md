@@ -50,7 +50,7 @@ before waiting three seconds, printing
 
 and finally exiting.
 
-The ``uv`` library allows us to call any function provided by the [``libuv``](http://docs.libuv.org/en/v1.x/api.html) C-library from Lua. This makes it possible to do a variety of things Lua can't normally do, such as accessing the file system, creating threads, setting timers, or sending network messages. All this is automatically included in the ``luvit`` executable (and, in fact, even inside the ``luvi`` runtime itself) so we can always ``require`` it.
+The ``uv`` library allows us to call any function provided by the [``libuv``](http://docs.libuv.org/en/v1.x/api.html) C-library from Lua. This makes it possible to do a variety of things Lua can't easily do, such as accessing the file system, creating threads, setting timers, or sending network messages. All this is automatically included in the ``luvit`` executable (and, in fact, even inside the ``luvi`` runtime itself) so we can always ``require`` it.
 
 Before we focus on the ``uv`` library and what else it can do, there's something very important that we can learn from the above:
 
