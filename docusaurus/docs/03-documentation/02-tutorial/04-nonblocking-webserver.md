@@ -21,7 +21,7 @@ print("File contents: ")
 print(fileContents)
 ```
 
-The main difference between this iteration and what we've built before is that we no longer need to rely on ``uv`` and its low-level interfaces. Instead, we can simply read from the file system, both synchronously and asynchronously - which is up next:
+The main difference between this iteration and what we've built before is that we no longer need to rely on ``uv`` and its low-level interfaces. Instead, we can simply read from the file system with a single call, both synchronously and asynchronously - which is up next:
 
 ```lua title="LuvitReadFileAsyncDemo.lua"
 local fs = require("fs")
