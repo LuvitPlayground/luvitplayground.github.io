@@ -3,7 +3,7 @@ sidebar_position: 3
 slug: /docs/tutorial/asynchronous-event-loop
 ---
 
-# About the Event Loop
+# Enter the Event Loop
 
 Before we explore ``uv``, we should stop a moment and think about the different ways that we can access resources (like files or sockets).
 
