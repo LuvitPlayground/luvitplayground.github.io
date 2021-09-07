@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://unofficialluvitexperiments.github.io/blog</id>
+    <title>Luvit.io Blog</title>
+    <updated>2021-09-02T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://unofficialluvitexperiments.github.io/blog"/>
+    <subtitle>Luvit.io Blog</subtitle>
+    <icon>https://unofficialluvitexperiments.github.io/img/favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[Hello there]]></title>
+        <id>hello-luvit</id>
+        <link href="https://unofficialluvitexperiments.github.io/blog/hello-luvit"/>
+        <updated>2021-09-02T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This is a test blog post, published via Docusaurus.  I didn't bother copying the original posts from the Luvit blog, but aside from the comment system it could easily be done.]]></summary>
+    </entry>
+</feed>

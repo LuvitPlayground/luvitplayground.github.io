@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Luvit.io Blog</title>
+        <link>https://unofficialluvitexperiments.github.io/blog</link>
+        <description>Luvit.io Blog</description>
+        <lastBuildDate>Thu, 02 Sep 2021 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[Hello there]]></title>
+            <link>https://unofficialluvitexperiments.github.io/blog/hello-luvit</link>
+            <guid>hello-luvit</guid>
+            <pubDate>Thu, 02 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[This is a test blog post, published via Docusaurus.  I didn't bother copying the original posts from the Luvit blog, but aside from the comment system it could easily be done.]]></description>
+        </item>
+    </channel>
+</rss>
